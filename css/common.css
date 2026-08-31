@@ -131,6 +131,40 @@ textarea {
 }
 .footer-title { color: #8bd0dd; font-size: 15px; font-weight: 800; line-height: 1.2; letter-spacing: .05em; }
 .footer-copy { color: #b8c0c2; font-size: 14px; }
+.footer-meta { display: grid; justify-items: end; gap: 22px; }
+.footer-social { display: flex; align-items: center; gap: 10px; }
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid #394345;
+  color: #c8d0d1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: color .2s ease, border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.footer-social a:hover,
+.footer-social a:focus-visible {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.footer-social a:focus-visible { outline: 2px solid #8bd0dd; outline-offset: 3px; }
+.footer-social svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.footer-social .social-icon-dot,
+.footer-social .social-icon-play { fill: currentColor; stroke: none; }
 .copyright { color: #7d888a; font-size: 11px; letter-spacing: .06em; }
 
 @media (max-width: 820px) {
@@ -167,6 +201,8 @@ textarea {
   .main-nav a { padding: 13px 0; font-size: 18px; }
   .main-nav a::after { right: auto; bottom: 9px; width: 28px; }
   .footer-inner { grid-template-columns: 1fr; align-items: start; gap: 24px; }
+  .footer-meta { justify-items: start; }
+  .footer-social { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
