@@ -23,7 +23,7 @@ const resourceData = {
       ['30대 · 혼자 여행', '★★★★☆', '서점마다 다루는 책이 달라 구경하는 재미가 있었습니다. 여유 있게 방문하는 것을 추천해요.'],
       ['40대 · 가족 여행', '★★★★☆', '아이와 함께 오래된 책을 고르고 원도심 이야기를 나누기 좋은 장소였습니다.']
     ],
-    cardnews: 'cardnews-bosu-bookstreet/index.html?card=3'
+    cardnews: 'cardnews-bosu-bookstreet/index.html?card=1'
   },
   ami: {
     number: '02',
