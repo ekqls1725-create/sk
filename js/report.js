@@ -22,7 +22,8 @@ const resourceData = {
       ['20대 · 친구 여행', '★★★★★', '낡은 책 냄새와 작은 간판들이 골목의 분위기를 만들어 줘서 천천히 사진 찍으며 걷기 좋았어요.'],
       ['30대 · 혼자 여행', '★★★★☆', '서점마다 다루는 책이 달라 구경하는 재미가 있었습니다. 여유 있게 방문하는 것을 추천해요.'],
       ['40대 · 가족 여행', '★★★★☆', '아이와 함께 오래된 책을 고르고 원도심 이야기를 나누기 좋은 장소였습니다.']
-    ]
+    ],
+    cardnews: 'cardnews-bosu-bookstreet/index.html?card=3'
   },
   ami: {
     number: '02',
@@ -81,7 +82,12 @@ const resourceModal = document.querySelector('#resource-modal');
 
 if (resourceCards.length && resourceModal) {
   const modalPanel = resourceModal.querySelector('.modal-panel');
+  const categoryNav = resourceModal.querySelector('.modal-category-nav');
   const categoryButtons = resourceModal.querySelectorAll('[data-modal-target]');
+  const cardnewsNav = resourceModal.querySelector('[data-cardnews-nav]');
+  const cardnewsSection = resourceModal.querySelector('[data-cardnews-section]');
+  const cardnewsFrame = resourceModal.querySelector('[data-cardnews-frame]');
+  const cardnewsLink = resourceModal.querySelector('[data-cardnews-link]');
   let previouslyFocused = null;
 
   const setText = (selector, value) => {
@@ -141,6 +147,21 @@ if (resourceCards.length && resourceModal) {
     }));
   };
 
+  const configureCardnews = (cardnewsUrl) => {
+    const hasCardnews = Boolean(cardnewsUrl);
+    cardnewsNav.hidden = !hasCardnews;
+    cardnewsSection.hidden = !hasCardnews;
+    categoryNav.classList.toggle('has-cardnews', hasCardnews);
+
+    if (hasCardnews) {
+      cardnewsFrame.src = cardnewsUrl;
+      cardnewsLink.href = cardnewsUrl;
+    } else {
+      cardnewsFrame.removeAttribute('src');
+      cardnewsLink.removeAttribute('href');
+    }
+  };
+
   const openModal = (key, trigger) => {
     const resource = resourceData[key];
     if (!resource) return;
@@ -155,6 +176,7 @@ if (resourceCards.length && resourceModal) {
     renderFacts(resource.facts);
     renderPrograms(resource.programs);
     renderReviews(resource.reviews);
+    configureCardnews(resource.cardnews);
 
     previouslyFocused = trigger;
     modalPanel.scrollTop = 0;
@@ -169,6 +191,7 @@ if (resourceCards.length && resourceModal) {
     resourceModal.classList.remove('open');
     resourceModal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
+    cardnewsFrame.removeAttribute('src');
     if (previouslyFocused) previouslyFocused.focus();
   };
 
@@ -202,7 +225,7 @@ if (resourceCards.length && resourceModal) {
     if (event.key === 'Escape') closeModal();
 
     if (event.key === 'Tab') {
-      const focusable = [...resourceModal.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')]
+      const focusable = [...resourceModal.querySelectorAll('button:not([disabled]), [href], iframe, [tabindex]:not([tabindex="-1"])')]
         .filter((element) => element.offsetParent !== null);
       if (!focusable.length) return;
       const first = focusable[0];

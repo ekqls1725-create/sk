@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f1e7" />
+    <title>보수동 책방골목 | 카드뉴스</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="viewer-bar">
+      <a href="?card=1" class="viewer-title">BOSU-DONG BOOK STREET</a>
+      <div class="viewer-actions">
+        <span id="card-count">01 / 05</span>
+      </div>
+    </header>
+
+    <main id="card-stage" class="card-stage" aria-live="polite">
+      <article class="card card--hook" data-card="1">
+        <div class="paper-grain" aria-hidden="true"></div>
+        <p class="eyebrow motion-up">BUSAN · OLD BOOKS · WALK</p>
+        <div class="hook-copy">
+          <p class="motion-up delay-1">부산 원도심에서</p>
+          <h1 class="motion-up delay-2">시간을<br /><em>넘기는</em> 골목</h1>
+          <p class="body motion-up delay-3">책등마다 다른 계절을 품은<br />보수동 책방골목으로.</p>
+        </div>
+        <div class="bottom-line motion-up delay-4"><span>BOOK STREET GUIDE</span><span>01</span></div>
+      </article>
+
+      <article class="card card--history" data-card="2">
+        <div class="paper-grain" aria-hidden="true"></div>
+        <p class="eyebrow motion-up">A STREET WITH A BEGINNING</p>
+        <h2 class="motion-up delay-1">책을 팔아<br />하루를 <em>잇던</em><br />시절에서</h2>
+        <p class="body motion-up delay-2">1950년대 한국전쟁 당시,<br />피난민들의 헌책 노점이 모여<br />골목의 시작이 되었습니다.</p>
+        <div class="timeline motion-scale delay-2" aria-hidden="true">
+          <span class="timeline-year">1950s</span>
+          <span class="timeline-dot"></span>
+          <span class="timeline-label">피란수도 부산의<br />살아있는 유산</span>
+        </div>
+        <div class="bottom-line motion-up delay-3"><span>HISTORY OF BOSU-DONG</span><span>02</span></div>
+      </article>
+
+      <article class="card card--find" data-card="3">
+        <div class="paper-grain" aria-hidden="true"></div>
+        <p class="eyebrow motion-up">WHAT YOU MAY FIND</p>
+        <h2 class="motion-up delay-1">책장을 열면<br /><em>우연</em>이 나온다</h2>
+        <div class="finding-list">
+          <p class="motion-up delay-2"><b>새책</b><span>오늘의 읽을거리</span></p>
+          <p class="motion-up delay-3"><b>헌책</b><span>누군가의 밑줄과 시간</span></p>
+          <p class="motion-up delay-4"><b>고서</b><span>쉽게 만날 수 없는 기록</span></p>
+        </div>
+        <div class="bottom-line motion-up delay-4"><span>LOOK CLOSELY</span><span>03</span></div>
+      </article>
+
+      <article class="card card--walk" data-card="4">
+        <div class="paper-grain" aria-hidden="true"></div>
+        <p class="eyebrow motion-up">HOW TO ENJOY THE ALLEY</p>
+        <h2 class="motion-up delay-1">보수동을<br /><em>걷는</em> 세 가지</h2>
+        <ol class="walk-steps">
+          <li class="motion-up delay-2"><span>01</span><div><b>목적 없이 들어가기</b><p>첫 책은 계획보다 호기심으로 고르세요.</p></div></li>
+          <li class="motion-up delay-3"><span>02</span><div><b>책등을 천천히 읽기</b><p>낡은 표지와 제목이 길을 안내합니다.</p></div></li>
+          <li class="motion-up delay-4"><span>03</span><div><b>마음에 걸린 한 권 남기기</b><p>오늘의 골목을 집으로 데려가세요.</p></div></li>
+        </ol>
+        <div class="bottom-line motion-up delay-4"><span>A SLOWER KIND OF TRAVEL</span><span>04</span></div>
+      </article>
+
+      <article class="card card--cta" data-card="5">
+        <div class="paper-grain" aria-hidden="true"></div>
+        <p class="eyebrow motion-up">NEXT STOP, BOSU-DONG</p>
+        <h2 class="motion-up delay-1">한 권의 책이<br /><em>골목의 기억</em>이<br />되는 곳</h2>
+        <div class="ticket motion-scale delay-2">
+          <span>DESTINATION</span><b>보수동 책방골목</b><span>부산광역시 중구 보수동1가</span>
+          <i></i><em>READ · WALK · KEEP</em>
+        </div>
+        <p class="cta-note motion-up delay-3">마음에 드는 책방 앞에서<br />잠시 멈춰보세요.</p>
+        <div class="bottom-line motion-up delay-4"><span>SAVE THIS WALK</span><span>05</span></div>
+      </article>
+    </main>
+
+    <nav class="card-nav" aria-label="카드 선택">
+      <a href="?card=1" aria-label="카드 1">01</a><a href="?card=2" aria-label="카드 2">02</a><a href="?card=3" aria-label="카드 3">03</a><a href="?card=4" aria-label="카드 4">04</a><a href="?card=5" aria-label="카드 5">05</a>
+    </nav>
+    <script src="motion.js"></script>
+  </body>
+</html>
