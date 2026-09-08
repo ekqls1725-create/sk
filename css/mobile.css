@@ -124,6 +124,7 @@
   width: min(390px, 32vw);
   min-width: 340px;
   padding: 13px;
+  overflow: hidden;
   border: 1px solid #071719;
   border-radius: 42px;
   background: #101516;
@@ -143,13 +144,19 @@
   pointer-events: none;
 }
 
-.mobile-device iframe {
-  display: block;
-  width: 100%;
+.mobile-device-screen {
   height: min(740px, 76vh);
   min-height: 600px;
-  border: 0;
+  overflow: hidden;
   border-radius: 31px;
+  background: var(--white);
+}
+
+.mobile-device iframe {
+  display: block;
+  width: calc(100% + 18px);
+  height: calc(100% + 18px);
+  border: 0;
   background: var(--white);
 }
 
@@ -184,7 +191,7 @@
 
   .mobile-device-speaker { top: 15px; }
 
-  .mobile-device iframe {
+  .mobile-device-screen {
     height: 78vh;
     min-height: 620px;
     border-radius: 21px;
@@ -208,7 +215,7 @@
 
   .mobile-device-speaker { display: none; }
 
-  .mobile-device iframe {
+  .mobile-device-screen {
     height: 82vh;
     min-height: 640px;
     border-radius: 0;
