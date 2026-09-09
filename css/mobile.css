@@ -78,29 +78,6 @@
 
 .mobile-web-features dd { font-size: 15px; font-weight: 700; }
 
-.mobile-web-launch {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 32px;
-  min-width: 250px;
-  margin-top: 38px;
-  padding: 15px 18px;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--white);
-  font-size: 14px;
-  font-weight: 700;
-  transition: background-color .2s ease, color .2s ease, transform .2s ease;
-}
-
-.mobile-web-launch:hover,
-.mobile-web-launch:focus-visible {
-  background: var(--white);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
 .mobile-device-area { justify-self: center; }
 
 .mobile-device-label {
@@ -203,7 +180,6 @@
   .mobile-web-copy { padding: 48px var(--page-padding) 0; }
   .mobile-web-index { margin-bottom: 44px; }
   .mobile-web-description { margin-top: 30px; }
-  .mobile-web-launch { width: 100%; min-width: 0; }
   .mobile-device-label { padding-inline: var(--page-padding); }
 
   .mobile-device {
