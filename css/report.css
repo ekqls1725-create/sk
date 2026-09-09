@@ -29,6 +29,9 @@
 .eyebrow { align-self: start; color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .13em; }
 .section-heading h2 { font-size: clamp(36px, 5vw, 70px); line-height: 1; letter-spacing: -.05em; }
 .section-description { color: var(--muted); font-size: 14px; }
+.section-heading .eyebrow,
+.section-heading h2,
+.section-heading .section-description { font-family: "Giants", sans-serif; font-weight: 400; }
 
 .resource-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 22px; align-items: start; }
 .resource-card {
