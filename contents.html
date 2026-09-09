@@ -44,36 +44,63 @@
       </div>
     </section>
 
-    <section class="contents-archive" aria-labelledby="archive-heading">
+    <section class="contents-archive" aria-label="콘텐츠 프로젝트 아카이브">
       <div class="section-inner">
         <div class="contents-category" aria-label="콘텐츠 카테고리">
-          <span>CARD NEWS</span>
-          <span>VIDEO</span>
-          <span class="active">WEB DESIGN</span>
+          <a href="#card-news">CARD NEWS</a>
+          <span aria-disabled="true">VIDEO</span>
+          <a href="#web-design">WEB DESIGN</a>
         </div>
 
-        <div class="archive-heading-row">
-          <div>
-            <p class="archive-eyebrow">WEB DESIGN · 2026</p>
-            <h2 id="archive-heading">웹 디자인</h2>
-          </div>
-          <p>브랜드의 아이디어와 서비스 경험을<br>하나의 웹 화면으로 기록했습니다.</p>
-        </div>
-
-        <a class="project-card" href="base-busan.html" aria-label="BASE BUSAN 웹 디자인 상세 페이지 보기">
-          <div class="project-thumbnail">
-            <img src="assets/projects/base-busan-detail-page.jpg" alt="BASE BUSAN 큐레이션 서비스 웹 디자인 상단 화면" loading="lazy">
-            <span class="project-view">VIEW PROJECT <span aria-hidden="true">↗</span></span>
-          </div>
-          <div class="project-info">
+        <section class="archive-block" id="card-news" aria-labelledby="card-news-heading">
+          <div class="archive-heading-row">
             <div>
-              <p>WEB DESIGN · CURATION SERVICE</p>
-              <h3>BASE:BUSAN</h3>
+              <p class="archive-eyebrow">CARD NEWS · BUSAN</p>
+              <h2 id="card-news-heading">카드뉴스</h2>
             </div>
-            <p class="project-description">부산의 취향과 공간을 연결하는<br>로컬 큐레이션 서비스</p>
-            <span class="project-number">01</span>
+            <p>관광 자원의 역사와 장소 경험을<br>간결한 이미지 콘텐츠로 기록했습니다.</p>
           </div>
-        </a>
+
+          <a class="project-card cardnews-project" href="cardnews-bosu-bookstreet/index.html?card=1" aria-label="보수동 책방골목 카드뉴스 첫 화면부터 보기">
+            <div class="project-thumbnail">
+              <img src="cardnews-bosu-bookstreet/previews/card-01.png" alt="보수동 책방골목 카드뉴스 첫 번째 화면" loading="lazy">
+              <span class="project-view">VIEW CARD NEWS <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="project-info">
+              <div>
+                <p>CARD NEWS · TOURISM CONTENT</p>
+                <h3>보수동 책방골목</h3>
+              </div>
+              <p class="project-description">오래된 책과 골목의 이야기를<br>다섯 장으로 기록한 관광 카드뉴스</p>
+              <span class="project-number">01</span>
+            </div>
+          </a>
+        </section>
+
+        <section class="archive-block" id="web-design" aria-labelledby="web-design-heading">
+          <div class="archive-heading-row">
+            <div>
+              <p class="archive-eyebrow">WEB DESIGN · 2026</p>
+              <h2 id="web-design-heading">웹 디자인</h2>
+            </div>
+            <p>브랜드의 아이디어와 서비스 경험을<br>하나의 웹 화면으로 기록했습니다.</p>
+          </div>
+
+          <a class="project-card" href="base-busan.html" aria-label="BASE BUSAN 웹 디자인 상세 페이지 보기">
+            <div class="project-thumbnail">
+              <img src="assets/projects/base-busan-detail-page.jpg" alt="BASE BUSAN 큐레이션 서비스 웹 디자인 상단 화면" loading="lazy">
+              <span class="project-view">VIEW PROJECT <span aria-hidden="true">↗</span></span>
+            </div>
+            <div class="project-info">
+              <div>
+                <p>WEB DESIGN · CURATION SERVICE</p>
+                <h3>BASE:BUSAN</h3>
+              </div>
+              <p class="project-description">부산의 취향과 공간을 연결하는<br>로컬 큐레이션 서비스</p>
+              <span class="project-number">02</span>
+            </div>
+          </a>
+        </section>
       </div>
     </section>
   </main>

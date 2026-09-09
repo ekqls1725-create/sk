@@ -50,7 +50,9 @@
   margin-bottom: clamp(70px, 9vw, 120px);
 }
 
+.contents-category a,
 .contents-category span {
+  display: inline-block;
   padding: 10px 16px;
   border: 1px solid var(--line);
   color: #7a8587;
@@ -59,7 +61,13 @@
   letter-spacing: .07em;
 }
 
-.contents-category .active { border-color: var(--accent); background: var(--accent); color: var(--white); }
+.contents-category a { transition: border-color .2s ease, background-color .2s ease, color .2s ease; }
+.contents-category a:hover,
+.contents-category a:focus-visible { border-color: var(--accent); background: var(--accent); color: var(--white); }
+.contents-category span { opacity: .55; }
+
+.archive-block { scroll-margin-top: 100px; }
+.archive-block + .archive-block { margin-top: clamp(96px, 12vw, 180px); }
 
 .archive-heading-row {
   display: grid;
@@ -79,6 +87,8 @@
 .project-thumbnail::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 48%, rgba(10,24,47,.68)); }
 .project-card:hover .project-thumbnail img,
 .project-card:focus-visible .project-thumbnail img { transform: scale(1.025); }
+.cardnews-project .project-thumbnail { background: #102647; }
+.cardnews-project .project-thumbnail img { object-fit: contain; object-position: center; padding: clamp(24px, 4vw, 64px); }
 
 .project-view {
   position: absolute;
@@ -166,6 +176,7 @@
 
 @media (max-width: 520px) {
   .contents-category { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .contents-category a,
   .contents-category span { padding-inline: 8px; text-align: center; font-size: 10px; }
   .project-thumbnail { aspect-ratio: 4 / 3; }
   .project-view { right: 14px; bottom: 14px; }
