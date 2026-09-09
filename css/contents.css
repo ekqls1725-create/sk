@@ -25,9 +25,9 @@
 
 .contents-title-row h1,
 .project-detail-title h1 {
-  font-family: "Giants", sans-serif;
+  font-family: "Giants Inline", sans-serif;
   font-size: clamp(62px, 9vw, 136px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: .82;
   letter-spacing: -.06em;
 }
