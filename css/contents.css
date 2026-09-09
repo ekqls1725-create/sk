@@ -25,9 +25,9 @@
 
 .contents-title-row h1,
 .project-detail-title h1 {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Giants", sans-serif;
   font-size: clamp(62px, 9vw, 136px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: .82;
   letter-spacing: -.06em;
 }

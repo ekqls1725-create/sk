@@ -32,9 +32,9 @@
 .mobile-web-eyebrow { margin-bottom: 18px; }
 
 .mobile-web-copy h1 {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Giants", sans-serif;
   font-size: clamp(56px, 7.2vw, 112px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: .9;
   letter-spacing: -.055em;
 }

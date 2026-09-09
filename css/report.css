@@ -20,7 +20,7 @@
 
 .hero-index { margin-bottom: 52px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
 .hero-copy { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr); gap: 48px; align-items: end; }
-.hero-copy h1 { font-family: "Pretendard", sans-serif; font-size: clamp(58px, 9vw, 132px); font-weight: 800; line-height: .82; letter-spacing: -.075em; }
+.hero-copy h1 { font-family: "Giants", sans-serif; font-size: clamp(58px, 9vw, 132px); font-weight: 700; line-height: .82; letter-spacing: -.075em; }
 .hero-copy h1 span { color: var(--accent); }
 .hero-copy p { padding-bottom: 4px; color: var(--muted); font-size: clamp(14px, 1.25vw, 18px); line-height: 1.8; }
 
