@@ -1,9 +1,9 @@
 .mobile-web-hero {
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(10, 133, 158, .07) 1px, transparent 1px) 0 0 / 80px 80px,
-    linear-gradient(rgba(10, 133, 158, .07) 1px, transparent 1px) 0 0 / 80px 80px,
-    #f3f7f7;
+    linear-gradient(90deg, rgba(10, 31, 68, .07) 1px, transparent 1px) 0 0 / 80px 80px,
+    linear-gradient(rgba(10, 31, 68, .07) 1px, transparent 1px) 0 0 / 80px 80px,
+    var(--surface);
 }
 
 .mobile-web-inner {
@@ -51,14 +51,14 @@
 .mobile-web-description {
   max-width: 590px;
   margin-top: 40px;
-  color: #4f5c5f;
+  color: var(--muted);
   font-size: clamp(16px, 1.4vw, 19px);
   line-height: 1.85;
 }
 
 .mobile-web-features {
   margin-top: 42px;
-  border-top: 1px solid #bdcbcd;
+  border-top: 1px solid var(--line);
 }
 
 .mobile-web-features div {
@@ -66,7 +66,7 @@
   grid-template-columns: 46px 1fr;
   gap: 18px;
   padding: 14px 0;
-  border-bottom: 1px solid #bdcbcd;
+  border-bottom: 1px solid var(--line);
 }
 
 .mobile-web-features dt {
@@ -85,7 +85,7 @@
   align-items: center;
   gap: 10px;
   margin: 0 0 14px 22px;
-  color: #526164;
+  color: var(--muted);
 }
 
 .mobile-device-label span {
@@ -93,7 +93,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 5px rgba(10, 133, 158, .14);
+  box-shadow: 0 0 0 5px rgba(10, 31, 68, .14);
 }
 
 .mobile-device {
@@ -102,10 +102,10 @@
   min-width: 340px;
   padding: 13px;
   overflow: hidden;
-  border: 1px solid #071719;
+  border: 1px solid var(--ink);
   border-radius: 42px;
-  background: #101516;
-  box-shadow: 0 28px 60px rgba(16, 21, 22, .18);
+  background: var(--ink);
+  box-shadow: 0 28px 60px rgba(10, 31, 68, .18);
 }
 
 .mobile-device-speaker {
@@ -116,7 +116,7 @@
   width: 74px;
   height: 20px;
   border-radius: 20px;
-  background: #101516;
+  background: var(--ink);
   transform: translateX(-50%);
   pointer-events: none;
 }
