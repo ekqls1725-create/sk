@@ -57,6 +57,11 @@
   line-height: 1.85;
 }
 
+.mobile-web-index,
+.mobile-web-eyebrow,
+.mobile-web-description,
+.mobile-device-label { font-family: "Giants", sans-serif; font-weight: 400; }
+
 .mobile-web-features {
   margin-top: 42px;
   border-top: 1px solid var(--line);

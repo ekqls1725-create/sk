@@ -42,6 +42,15 @@
   line-height: 1.8;
 }
 
+.contents-index,
+.contents-title-row > p,
+.contents-category button,
+.archive-heading-row,
+.project-back,
+.project-label,
+.project-detail-title > p,
+.project-visual-heading { font-family: "Giants", sans-serif; font-weight: 400; }
+
 .contents-archive { padding: clamp(72px, 8vw, 120px) 0 clamp(100px, 12vw, 180px); }
 
 .contents-category {
