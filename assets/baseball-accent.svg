@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title">
+  <title id="title">빨간 실밥이 있는 아이보리 야구공</title>
+  <circle cx="160" cy="160" r="144" fill="#E8DED1"/>
+  <g fill="none" stroke="#C62828" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M103 34c37 42 50 87 46 132-4 49-25 89-65 120" stroke-width="5"/>
+    <path d="M217 34c-37 42-50 87-46 132 4 49 25 89 65 120" stroke-width="5"/>
+    <g stroke-width="4">
+      <path d="M107 48l-17-8m23 22-19-7m24 21-19-5m23 19-19-3m21 18-18-1m19 16-18 2m18 14-18 4m17 12-18 6m16 10-17 8m14 7-16 10m12 5-14 12m10 2-13 13m8-1-11 14m5-4-9 15"/>
+      <path d="M213 48l17-8m-23 22 19-7m-24 21 19-5m-23 19 19-3m-21 18 18-1m-19 16 18 2m-18 14 18 4m-17 12 18 6m-16 10 17 8m-14 7 16 10m-12 5 14 12m-10 2 13 13m-8-1 11 14m-5-4 9 15"/>
+    </g>
+  </g>
+</svg>

@@ -79,6 +79,18 @@ textarea {
   padding-inline: var(--page-padding);
 }
 
+.page-baseball {
+  position: absolute;
+  z-index: 0;
+  top: clamp(42px, 5vw, 76px);
+  right: var(--page-padding);
+  width: clamp(118px, 15vw, 220px);
+  height: auto;
+  pointer-events: none;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 18px 28px rgba(10, 31, 68, .1));
+}
+
 .site-header {
   position: relative;
   z-index: 100;
