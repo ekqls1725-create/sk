@@ -20,7 +20,7 @@
 
 .hero-index { margin-bottom: 52px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .12em; }
 .hero-copy { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr); gap: 48px; align-items: end; }
-.hero-copy h1 { font-family: "Ria", "Giants", sans-serif; font-size: clamp(58px, 9vw, 132px); font-weight: normal; line-height: .82; letter-spacing: -.07em; }
+.hero-copy h1 { font-family: "Pretendard", sans-serif; font-size: clamp(58px, 9vw, 132px); font-weight: 800; line-height: .82; letter-spacing: -.075em; }
 .hero-copy h1 span { color: var(--accent); }
 .hero-copy p { padding-bottom: 4px; color: var(--muted); font-size: clamp(14px, 1.25vw, 18px); line-height: 1.8; }
 
@@ -153,7 +153,7 @@ body.modal-open { overflow: hidden; }
   background: rgba(255, 255, 255, .45);
   transform: rotate(-35deg);
 }
-.modal-visual-index { position: relative; z-index: 1; font-family: "Ria", "Giants", sans-serif; font-size: clamp(86px, 13vw, 190px); line-height: .8; letter-spacing: -.08em; }
+.modal-visual-index { position: relative; z-index: 1; font-family: "Pretendard", sans-serif; font-size: clamp(86px, 13vw, 190px); font-weight: 800; line-height: .8; letter-spacing: -.08em; }
 .modal-visual-word { position: relative; z-index: 1; font-size: 12px; font-weight: 700; line-height: 1.25; letter-spacing: .14em; }
 .modal-hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(62px, 7vw, 96px); }
 .modal-type { margin-bottom: 20px; color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .1em; }
@@ -193,7 +193,7 @@ body.modal-open { overflow: hidden; }
 .modal-section { padding: clamp(72px, 9vw, 118px) 0; scroll-margin-top: 66px; border-bottom: 1px solid var(--line); }
 .modal-section:last-child { border-bottom: 0; }
 .modal-section-heading { display: grid; grid-template-columns: 70px 1fr; gap: 16px; margin-bottom: 48px; }
-.modal-section-heading > span { color: var(--accent); font-family: "Ria", "Giants", sans-serif; font-size: 34px; line-height: 1; }
+.modal-section-heading > span { color: var(--accent); font-family: "Pretendard", sans-serif; font-size: 34px; font-weight: 800; line-height: 1; }
 .modal-section-heading p { margin-bottom: 8px; color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: .14em; }
 .modal-section-heading h3 { font-size: clamp(30px, 4vw, 50px); line-height: 1; letter-spacing: -.04em; }
 .modal-overview-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 7vw, 100px); }
