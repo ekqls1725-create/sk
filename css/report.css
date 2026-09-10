@@ -223,7 +223,7 @@ body.modal-open { overflow: hidden; }
   .hero-copy { gap: 36px; }
   .hero-copy h1 { font-size: clamp(48px, 15vw, 72px); line-height: .88; }
   .hero-copy p br { display: none; }
-  .hero-copy .page-hero-accent { margin-top: 4px; }
+  .hero-copy .page-hero-art { margin-top: 4px; }
   .section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
   .section-description { grid-column: auto; }
   .resource-grid { gap: 16px; }
