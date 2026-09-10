@@ -98,15 +98,16 @@ textarea {
   object-fit: cover;
   object-position: 72% 68%;
   justify-self: end;
+  filter: contrast(1.04) saturate(.92);
 }
 
 .page-hero-art--floating {
   position: absolute;
   z-index: 2;
-  top: clamp(18px, 2.2vw, 34px);
-  right: var(--page-padding);
-  width: clamp(360px, 38vw, 580px);
-  height: clamp(230px, 24vw, 350px);
+  top: clamp(-18px, -1vw, -4px);
+  right: calc(var(--page-padding) * .35);
+  width: clamp(470px, 48vw, 720px);
+  height: clamp(310px, 32vw, 470px);
   pointer-events: none;
 }
 
@@ -209,10 +210,10 @@ textarea {
   .page-hero::before { height: 4px; }
   .page-hero-art { width: 100%; }
   .page-hero-art--floating {
-    top: 10px;
-    right: 12px;
-    width: min(58vw, 230px);
-    height: 148px;
+    top: -6px;
+    right: -20px;
+    width: min(78vw, 310px);
+    height: 200px;
   }
   .header-inner { min-height: 76px; }
   .menu-toggle { display: flex; align-items: center; gap: 12px; padding: 12px 0; }

@@ -223,7 +223,12 @@ body.modal-open { overflow: hidden; }
   .hero-copy { gap: 36px; }
   .hero-copy h1 { font-size: clamp(48px, 15vw, 72px); line-height: .88; }
   .hero-copy p br { display: none; }
-  .hero-copy .page-hero-art { width: min(100%, 620px); margin-top: 4px; }
+  .hero-copy .page-hero-art {
+    width: min(128%, 720px);
+    max-width: none;
+    margin: -44px -12% -36px 0;
+    transform: translateX(14%) scale(1.12);
+  }
   .section-heading { grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
   .section-description { grid-column: auto; }
   .resource-grid { gap: 16px; }
