@@ -79,38 +79,6 @@ textarea {
   padding-inline: var(--page-padding);
 }
 
-.page-hero::before {
-  content: "";
-  position: absolute;
-  z-index: 3;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 6px;
-  background: linear-gradient(90deg, #0A1F44 0 70%, #1A1A1A 70% 92%, #C62828 92% 100%);
-  pointer-events: none;
-}
-
-.page-hero-art {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  object-position: 72% 68%;
-  justify-self: end;
-  filter: contrast(1.04) saturate(.92);
-}
-
-.page-hero-art--floating {
-  position: absolute;
-  z-index: 2;
-  top: clamp(-18px, -1vw, -4px);
-  right: calc(var(--page-padding) * .35);
-  width: clamp(470px, 48vw, 720px);
-  height: clamp(310px, 32vw, 470px);
-  pointer-events: none;
-}
-
 .site-header {
   position: relative;
   z-index: 100;
@@ -207,14 +175,6 @@ textarea {
 .copyright { color: rgba(255, 255, 255, .46); font-size: 11px; letter-spacing: .06em; }
 
 @media (max-width: 820px) {
-  .page-hero::before { height: 4px; }
-  .page-hero-art { width: 100%; }
-  .page-hero-art--floating {
-    top: -6px;
-    right: -20px;
-    width: min(78vw, 310px);
-    height: 200px;
-  }
   .header-inner { min-height: 76px; }
   .menu-toggle { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
   .menu-toggle-label { font-size: 11px; font-weight: 800; letter-spacing: .08em; }

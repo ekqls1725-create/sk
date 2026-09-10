@@ -8,13 +8,6 @@
 .contents-hero > .section-inner,
 .project-detail-hero > .section-inner { position: relative; z-index: 1; }
 
-.contents-hero .page-hero-art--floating {
-  right: -28px;
-  width: clamp(540px, 54vw, 820px);
-  height: clamp(340px, 35vw, 520px);
-  object-position: 78% 66%;
-}
-
 .contents-index,
 .archive-eyebrow,
 .project-label,
@@ -141,12 +134,6 @@
 .project-number { color: rgba(26, 26, 26, .42); font-size: 13px; letter-spacing: .08em; }
 
 .project-detail-hero { position: relative; overflow: hidden; padding: clamp(50px, 7vw, 100px) 0 clamp(72px, 10vw, 148px); background: var(--surface); }
-.project-detail-hero .page-hero-art--floating {
-  right: -18px;
-  width: clamp(460px, 46vw, 700px);
-  height: clamp(290px, 29vw, 440px);
-  object-position: 80% 70%;
-}
 .project-back { display: inline-flex; gap: 12px; margin-bottom: clamp(70px, 10vw, 140px); color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .1em; }
 .project-back:hover,
 .project-back:focus-visible { color: var(--accent); }
@@ -189,12 +176,6 @@
 .project-bottom-nav a span { color: var(--accent); font-size: 9px; letter-spacing: .11em; }
 
 @media (max-width: 820px) {
-  .contents-hero .page-hero-art--floating,
-  .project-detail-hero .page-hero-art--floating {
-    right: -24px;
-    width: min(82vw, 330px);
-    height: 210px;
-  }
   .contents-title-row,
   .project-detail-title { grid-template-columns: 1fr; gap: 34px; }
   .archive-heading-row { grid-template-columns: 1fr; gap: 18px; }
