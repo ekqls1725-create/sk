@@ -7,7 +7,7 @@
   <title>Report | BASE: ARCHIVE</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/common.css?v=20260910-5">
-  <link rel="stylesheet" href="css/report.css?v=20260910-5">
+  <link rel="stylesheet" href="css/report.css?v=20260911-hero1">
   <script src="js/common.js" defer></script>
   <script src="js/report.js" defer></script>
 </head>
@@ -38,11 +38,37 @@
 
   <main id="main-content">
     <section class="report-hero" aria-labelledby="report-title">
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <linearGradient id="hero-surface" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".92"/>
+              <stop offset=".52" stop-color="#FFFFFF" stop-opacity=".20"/>
+              <stop offset="1" stop-color="#0A1F44" stop-opacity="0"/>
+            </linearGradient>
+            <radialGradient id="hero-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".82"/>
+              <stop offset=".44" stop-color="#FFFFFF" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="hero-blur" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="42"/>
+            </filter>
+          </defs>
+          <ellipse class="hero-art__glow" cx="1115" cy="170" rx="400" ry="250" fill="url(#hero-glow)" filter="url(#hero-blur)"/>
+          <path class="hero-art__void" d="M842,-80 C1120,-18 1140,184 1488,186 L1488,752 L813,752 C950,594 1040,473 908,333 C786,204 686,37 842,-80Z"/>
+          <path class="hero-art__surface" d="M1020,-44 C1208,56 1122,250 1500,286 L1500,664 C1235,632 1033,721 854,612 C683,507 758,356 893,273 C1015,198 864,39 1020,-44Z" fill="url(#hero-surface)"/>
+          <path class="hero-art__line" d="M757,724 C821,563 1059,555 1087,392 C1115,232 1256,112 1482,106"/>
+          <circle class="hero-art__orbit" cx="1190" cy="331" r="246"/>
+          <circle class="hero-art__accent" cx="1221" cy="521" r="10"/>
+        </svg>
+      </div>
       <div class="section-inner">
         <div class="hero-index" aria-hidden="true">01 — REPORT</div>
         <div class="hero-copy">
           <h1 id="report-title">Local<br><span>Research</span></h1>
         </div>
+        <p class="hero-caption" aria-hidden="true">BUSAN / TOURISM / ARCHIVE</p>
       </div>
     </section>
 
