@@ -7,7 +7,7 @@
   <title>Contents | BASE: ARCHIVE</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/common.css?v=20260910-5">
-  <link rel="stylesheet" href="css/contents.css?v=20260910-5">
+  <link rel="stylesheet" href="css/contents.css?v=20260912-hero1">
   <script src="js/common.js" defer></script>
   <script src="js/contents.js" defer></script>
 </head>
@@ -36,6 +36,31 @@
 
   <main id="main-content">
     <section class="contents-hero" aria-labelledby="contents-title">
+      <div class="contents-hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <radialGradient id="contents-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".82"/>
+              <stop offset=".46" stop-color="#FFFFFF" stop-opacity=".18"/>
+              <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="contents-glass" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".52"/>
+              <stop offset=".62" stop-color="#FFFFFF" stop-opacity=".08"/>
+              <stop offset="1" stop-color="#0A1F44" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="contents-blur" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="48"/>
+            </filter>
+          </defs>
+          <ellipse class="contents-art-glow" cx="1165" cy="158" rx="390" ry="238" fill="url(#contents-glow)" filter="url(#contents-blur)"/>
+          <path class="contents-art-void" d="M1100,-85 C875,53 986,226 769,348 C617,434 655,626 875,786 L1510,786 L1510,-85Z"/>
+          <path class="contents-art-glass" d="M1270,-78 C1028,80 1200,249 956,364 C733,469 829,678 1080,774 L1510,774 L1510,-78Z" fill="url(#contents-glass)"/>
+          <circle class="contents-art-orbit" cx="1114" cy="338" r="270"/>
+          <path class="contents-art-line" d="M742,744 C891,580 837,444 1018,335 C1167,246 1165,78 1386,-34"/>
+          <rect class="contents-art-accent" x="1265" y="537" width="16" height="16" rx="2" transform="rotate(18 1273 545)"/>
+        </svg>
+      </div>
       <div class="section-inner">
         <p class="contents-index">02 — CONTENTS</p>
         <div class="contents-title-row">

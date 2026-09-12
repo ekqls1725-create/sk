@@ -7,7 +7,7 @@
   <title>Mobile App | BASE: ARCHIVE</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/common.css?v=20260910-5">
-  <link rel="stylesheet" href="css/mobile.css?v=20260910-5">
+  <link rel="stylesheet" href="css/mobile.css?v=20260912-hero1">
   <script src="js/common.js" defer></script>
 </head>
 <body>
@@ -37,6 +37,31 @@
 
   <main id="main-content">
     <section class="mobile-web-hero" aria-labelledby="mobile-web-title">
+      <div class="mobile-hero-art" aria-hidden="true">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <defs>
+            <radialGradient id="mobile-glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".78"/>
+              <stop offset=".5" stop-color="#FFFFFF" stop-opacity=".15"/>
+              <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="mobile-surface" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#1A1A1A" stop-opacity=".78"/>
+              <stop offset=".55" stop-color="#FFFFFF" stop-opacity=".16"/>
+              <stop offset="1" stop-color="#FFFFFF" stop-opacity=".38"/>
+            </linearGradient>
+            <filter id="mobile-blur" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="54"/>
+            </filter>
+          </defs>
+          <ellipse class="mobile-art-glow" cx="510" cy="652" rx="460" ry="245" fill="url(#mobile-glow)" filter="url(#mobile-blur)"/>
+          <path class="mobile-art-void" d="M-80,500 C172,346 350,438 508,293 C675,140 835,235 948,-70 L-80,-70Z"/>
+          <path class="mobile-art-surface" d="M-120,823 C111,650 263,757 468,583 C661,420 825,534 1007,286 C1092,170 1212,96 1510,114 L1510,980 L-120,980Z" fill="url(#mobile-surface)"/>
+          <path class="mobile-art-line" d="M-54,846 C222,612 368,785 574,553 C750,355 983,477 1119,246 C1203,103 1319,62 1480,52"/>
+          <circle class="mobile-art-orbit" cx="772" cy="465" r="322"/>
+          <circle class="mobile-art-accent" cx="648" cy="725" r="10"/>
+        </svg>
+      </div>
       <div class="mobile-web-inner">
         <div class="mobile-web-copy">
           <p class="mobile-web-index">05 — MOBILE APP</p>
