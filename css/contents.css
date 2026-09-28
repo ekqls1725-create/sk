@@ -119,6 +119,8 @@
 .project-card:focus-visible .project-thumbnail img { transform: scale(1.025); }
 .cardnews-project .project-thumbnail { background: var(--accent); }
 .cardnews-project .project-thumbnail img { object-fit: contain; object-position: center; padding: clamp(24px, 4vw, 64px); }
+.poster-project .project-thumbnail { background: #07152f; }
+.poster-project .project-thumbnail img { object-fit: contain; object-position: center; padding: clamp(18px, 3vw, 42px); }
 
 .project-view {
   position: absolute;
@@ -185,6 +187,24 @@
 .project-visual img { display: block; width: 100%; height: auto; box-shadow: 0 24px 70px rgba(13,31,51,.12); }
 .project-visual figcaption { padding: 16px 0 26px; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
 
+.poster-detail-page .project-visual { width: min(760px, calc(100% - 2 * var(--page-padding))); }
+.poster-detail-page .project-visual img { box-shadow: 0 28px 80px rgba(7, 21, 47, .2); }
+.project-story { padding: clamp(88px, 11vw, 160px) 0; background: var(--white); }
+.project-story-heading { display: grid; grid-template-columns: .65fr 1.35fr; gap: 48px; margin-bottom: clamp(58px, 8vw, 100px); }
+.project-story-heading .eyebrow { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .13em; }
+.project-story-heading h2 { max-width: 10em; font-family: "Giants", sans-serif; font-size: clamp(38px, 5.5vw, 76px); font-weight: 400; line-height: 1.03; letter-spacing: -.05em; }
+.project-story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.project-story-item { padding: clamp(30px, 4vw, 54px) clamp(0px, 3vw, 42px) clamp(36px, 5vw, 64px) 0; border-bottom: 1px solid var(--line); }
+.project-story-item:nth-child(even) { padding-right: 0; padding-left: clamp(0px, 3vw, 42px); border-left: 1px solid var(--line); }
+.project-story-item .story-number { display: block; margin-bottom: 34px; color: #C62828; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.project-story-item h3 { margin-bottom: 18px; font-family: "Giants", sans-serif; font-size: clamp(24px, 2.6vw, 38px); font-weight: 400; line-height: 1.15; }
+.project-story-item p { color: var(--muted); font-size: 15px; line-height: 1.9; }
+.project-story-item--message { background: var(--accent); color: var(--white); padding-inline: clamp(28px, 4vw, 56px) !important; }
+.project-story-item--message .story-number { color: rgba(255, 255, 255, .55); }
+.project-story-item--message h3 { font-family: "Giants Inline", sans-serif; font-size: clamp(32px, 4vw, 58px); line-height: 1; }
+.project-story-item--message p { color: rgba(255, 255, 255, .68); }
+.project-disclaimer { margin-top: 34px; color: var(--muted); font-size: 11px; letter-spacing: .03em; }
+
 .project-bottom-nav { padding: 48px 0; border-top: 1px solid var(--line); background: var(--white); }
 .project-bottom-nav .section-inner { display: flex; justify-content: space-between; gap: 30px; }
 .project-bottom-nav a { display: grid; gap: 4px; font-size: 18px; font-weight: 700; }
@@ -205,6 +225,7 @@
   .project-meta div:nth-child(2) { border-right: 0; }
   .project-meta div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .project-visual-heading { align-items: start; flex-direction: column; }
+  .project-story-heading { grid-template-columns: 1fr; gap: 22px; }
 }
 
 @media (max-width: 520px) {
@@ -223,4 +244,9 @@
   .project-meta div:last-child { border-bottom: 0; }
   .project-visual { width: 100%; }
   .project-visual figcaption { padding-inline: var(--page-padding); }
+  .poster-detail-page .project-visual { width: 100%; }
+  .project-story-grid { grid-template-columns: 1fr; }
+  .project-story-item,
+  .project-story-item:nth-child(even) { padding: 34px 0 44px; border-left: 0; }
+  .project-story-item--message { padding-inline: 24px !important; }
 }
