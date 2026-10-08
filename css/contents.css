@@ -121,6 +121,11 @@
 .cardnews-project .project-thumbnail img { object-fit: contain; object-position: center; padding: clamp(24px, 4vw, 64px); }
 .poster-project .project-thumbnail { background: #07152f; }
 .poster-project .project-thumbnail img { object-fit: contain; object-position: center; padding: clamp(18px, 3vw, 42px); }
+.shortform-project .project-thumbnail { background: radial-gradient(circle at 50% 44%, #18355f 0%, #0A1F44 48%, #07152f 100%); }
+.shortform-project .project-thumbnail video { display: block; width: 100%; height: 100%; object-fit: contain; transition: transform .6s cubic-bezier(.2,.75,.25,1); }
+.shortform-project:hover .project-thumbnail video,
+.shortform-project:focus-visible .project-thumbnail video { transform: scale(1.025); }
+.shortform-duration { position: absolute; z-index: 1; top: 24px; left: 24px; padding: 8px 10px; background: rgba(7, 21, 47, .72); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: .1em; backdrop-filter: blur(8px); }
 
 .project-view {
   position: absolute;
@@ -189,6 +194,10 @@
 
 .poster-detail-page .project-visual { width: min(760px, calc(100% - 2 * var(--page-padding))); }
 .poster-detail-page .project-visual img { box-shadow: 0 28px 80px rgba(7, 21, 47, .2); }
+.shortform-detail-page .project-visual-section { padding-bottom: clamp(82px, 10vw, 140px); }
+.shortform-player-shell { width: min(1120px, calc(100% - 2 * var(--page-padding))); margin: 0 auto; padding: clamp(28px, 5vw, 72px); background: radial-gradient(circle at 50% 42%, #17345f 0%, #0A1F44 52%, #07152f 100%); }
+.shortform-player { display: block; width: min(430px, 100%); margin: 0 auto; background: #050b16; box-shadow: 0 30px 90px rgba(4, 14, 32, .38); }
+.shortform-player-caption { width: min(1120px, calc(100% - 2 * var(--page-padding))); margin: 0 auto; padding-top: 16px; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
 .project-story { padding: clamp(88px, 11vw, 160px) 0; background: var(--white); }
 .project-story-heading { display: grid; grid-template-columns: .65fr 1.35fr; gap: 48px; margin-bottom: clamp(58px, 8vw, 100px); }
 .project-story-heading .eyebrow { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .13em; }

@@ -14,6 +14,17 @@ if (contentTabs.length && contentPanels.length) {
       panel.hidden = panel.id !== panelId;
     });
 
+    document.querySelectorAll('[data-tab-preview]').forEach((video) => {
+      const isActive = video.closest('[data-content-panel]')?.id === panelId;
+
+      if (isActive) {
+        if (!video.src) video.src = video.dataset.src;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+
     if (updateHash) history.replaceState(null, '', `#${panelId}`);
   };
 
