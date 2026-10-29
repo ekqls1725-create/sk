@@ -2,6 +2,7 @@
   const endpoint = 'https://apis.data.go.kr/6260000/AttractionService/getAttractionKr';
   const localConfigUrl = 'js/busan-tourism-api.local.json';
   const storageKey = 'baseArchiveBusanTourismApiKey';
+  const likesStorageKey = 'baseArchiveBusanTourismLikes';
   const pageSize = 100;
   const visibleStep = 12;
 
@@ -29,6 +30,12 @@
   let allItems = [];
   let visibleCount = visibleStep;
   let isLoading = false;
+  let likedItems = new Set();
+
+  const cleanDisplayText = (value) => String(value || '')
+    .replace(/(?:\(|（)\s*(?:한|영|중간|중번|일)(?:\s*[,·/]\s*(?:한|영|중간|중번|일))*\s*(?:\)|）)/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
 
   const getValue = (item, keys, fallback = '') => {
     for (const key of keys) {
@@ -46,6 +53,21 @@
     } catch {
       return trimmed;
     }
+  };
+
+  const readLikedItems = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(likesStorageKey) || '[]');
+      likedItems = new Set(Array.isArray(saved) ? saved.map(String) : []);
+    } catch {
+      likedItems = new Set();
+    }
+  };
+
+  const saveLikedItems = () => {
+    try {
+      localStorage.setItem(likesStorageKey, JSON.stringify([...likedItems]));
+    } catch { /* ignore unavailable storage */ }
   };
 
   const readLocalConfig = async () => {
@@ -151,7 +173,7 @@
   const populateDistricts = () => {
     const selected = districtSelect.value;
     const districts = [...new Set(allItems
-      .map((item) => getValue(item, ['GUGUN_NM', 'gugunNm']))
+      .map((item) => cleanDisplayText(getValue(item, ['GUGUN_NM', 'gugunNm'])))
       .filter(Boolean))]
       .sort((a, b) => a.localeCompare(b, 'ko'));
 
@@ -165,11 +187,11 @@
     const district = districtSelect.value;
 
     return allItems.filter((item) => {
-      const itemDistrict = getValue(item, ['GUGUN_NM', 'gugunNm']);
+      const itemDistrict = cleanDisplayText(getValue(item, ['GUGUN_NM', 'gugunNm']));
       if (district && itemDistrict !== district) return false;
       if (!query) return true;
 
-      const searchable = [
+      const searchable = cleanDisplayText([
         getValue(item, ['MAIN_TITLE', 'mainTitle']),
         getValue(item, ['TITLE', 'title']),
         getValue(item, ['SUBTITLE', 'subtitle']),
@@ -177,23 +199,25 @@
         getValue(item, ['ADDR1', 'addr1']),
         itemDistrict,
         getValue(item, ['MIDDLE_SIZE_RM1', 'middleSizeRm1'])
-      ].join(' ').toLocaleLowerCase('ko');
+      ].join(' ')).toLocaleLowerCase('ko');
 
       return searchable.includes(query);
     });
   };
 
   const createItem = (item, index) => {
-    const title = getValue(item, ['MAIN_TITLE', 'mainTitle', 'TITLE', 'title'], '이름 없는 명소');
-    const subtitle = getValue(item, ['SUBTITLE', 'subtitle', 'TITLE', 'title']);
-    const district = getValue(item, ['GUGUN_NM', 'gugunNm'], '부산');
-    const address = getValue(item, ['ADDR1', 'addr1', 'MAIN_PLACE', 'mainPlace'], '주소 정보 없음');
-    const description = getValue(item, ['MIDDLE_SIZE_RM1', 'middleSizeRm1'], subtitle || '상세 정보는 데이터 원문에서 확인할 수 있습니다.');
+    const title = cleanDisplayText(getValue(item, ['MAIN_TITLE', 'mainTitle', 'TITLE', 'title'], '이름 없는 명소'));
+    const subtitle = cleanDisplayText(getValue(item, ['SUBTITLE', 'subtitle', 'TITLE', 'title']));
+    const district = cleanDisplayText(getValue(item, ['GUGUN_NM', 'gugunNm'], '부산'));
+    const address = cleanDisplayText(getValue(item, ['ADDR1', 'addr1', 'MAIN_PLACE', 'mainPlace'], '주소 정보 없음'));
+    const description = cleanDisplayText(getValue(item, ['MIDDLE_SIZE_RM1', 'middleSizeRm1'], subtitle || '상세 정보는 데이터 원문에서 확인할 수 있습니다.'));
     const imageUrl = getValue(item, ['MAIN_IMG_THUMB', 'mainImgThumb', 'MAIN_IMG_NORMAL', 'mainImgNormal'])
       .replace(/^http:\/\//i, 'https://');
-    const phone = getValue(item, ['CNTCT_TEL', 'cntctTel']);
-    const hours = getValue(item, ['USAGE_DAY_WEEK_AND_TIME', 'usageDayWeekAndTime']);
+    const phone = cleanDisplayText(getValue(item, ['CNTCT_TEL', 'cntctTel']));
+    const hours = cleanDisplayText(getValue(item, ['USAGE_DAY_WEEK_AND_TIME', 'usageDayWeekAndTime']));
     const homepage = getValue(item, ['HOMEPAGE_URL', 'homepageUrl']);
+    const itemId = getValue(item, ['UC_SEQ', 'ucSeq'], `${title}|${address}`);
+    const isLiked = likedItems.has(itemId);
 
     const row = document.createElement('li');
     row.className = 'tourism-item';
@@ -236,6 +260,32 @@
     descriptionWrap.append(copy, meta);
     body.append(imageWrap, descriptionWrap);
 
+    const actions = document.createElement('div');
+    actions.className = 'tourism-item-actions';
+
+    const likeButton = document.createElement('button');
+    likeButton.className = 'tourism-like-button';
+    likeButton.type = 'button';
+    likeButton.classList.toggle('is-liked', isLiked);
+    likeButton.setAttribute('aria-pressed', String(isLiked));
+    likeButton.setAttribute('aria-label', `${title} ${isLiked ? '좋아요 취소' : '좋아요'}`);
+    const heart = document.createElement('span');
+    heart.className = 'tourism-like-heart';
+    heart.setAttribute('aria-hidden', 'true');
+    heart.textContent = '♥';
+    const likeLabel = document.createElement('span');
+    likeLabel.textContent = '좋아요';
+    likeButton.append(heart, likeLabel);
+    likeButton.addEventListener('click', () => {
+      const nextLiked = !likedItems.has(itemId);
+      if (nextLiked) likedItems.add(itemId);
+      else likedItems.delete(itemId);
+      saveLikedItems();
+      likeButton.classList.toggle('is-liked', nextLiked);
+      likeButton.setAttribute('aria-pressed', String(nextLiked));
+      likeButton.setAttribute('aria-label', `${title} ${nextLiked ? '좋아요 취소' : '좋아요'}`);
+    });
+
     const link = document.createElement('a');
     link.className = 'tourism-item-link';
     link.target = '_blank';
@@ -245,7 +295,8 @@
       ? homepage
       : `https://map.naver.com/p/search/${encodeURIComponent(`${title} ${address}`)}`;
 
-    row.append(number, titleWrap, body, link);
+    actions.append(likeButton, link);
+    row.append(number, titleWrap, body, actions);
     return row;
   };
 
@@ -327,6 +378,7 @@
   });
 
   const initialize = async () => {
+    readLikedItems();
     let browserKey = '';
     try { browserKey = normalizeKey(localStorage.getItem(storageKey)); } catch { /* ignore unavailable storage */ }
     const terminalKey = await readLocalConfig();

@@ -268,6 +268,27 @@
   -webkit-line-clamp: 3;
 }
 .tourism-item-meta { margin-top: 11px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.tourism-item-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+.tourism-like-button {
+  min-width: 92px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.tourism-like-button:hover { transform: translateY(-2px); border-color: #C62828; color: #C62828; }
+.tourism-like-button:focus-visible { outline: 3px solid rgba(198, 40, 40, .22); outline-offset: 3px; }
+.tourism-like-heart { color: rgba(26, 26, 26, .22); font-size: 17px; line-height: 1; transition: color .2s ease, transform .2s ease; }
+.tourism-like-button.is-liked { border-color: #C62828; background: #C62828; color: var(--white); }
+.tourism-like-button.is-liked .tourism-like-heart { color: var(--white); transform: scale(1.08); }
 .tourism-item-link {
   display: inline-flex;
   align-items: center;
@@ -443,7 +464,7 @@ body.modal-open { overflow: hidden; }
   .modal-hero { grid-template-columns: .75fr 1.25fr; }
   .modal-hero-copy { padding-inline: 48px; }
   .tourism-item { grid-template-columns: 54px minmax(200px, .7fr) minmax(280px, 1.3fr); }
-  .tourism-item-link { grid-column: 2 / -1; justify-self: end; }
+  .tourism-item-actions { grid-column: 2 / -1; flex-direction: row; align-items: center; justify-content: flex-end; }
 }
 
 @media (max-width: 680px) {
@@ -494,5 +515,5 @@ body.modal-open { overflow: hidden; }
   .tourism-item-title { padding-right: 4px; }
   .tourism-item-body { grid-column: 2; grid-template-columns: 86px 1fr; gap: 14px; }
   .tourism-item-image { width: 86px; }
-  .tourism-item-link { grid-column: 2; justify-self: start; }
+  .tourism-item-actions { grid-column: 2; justify-content: flex-start; flex-wrap: wrap; }
 }
