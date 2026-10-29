@@ -105,6 +105,188 @@
 .card-action span { font-size: 18px; line-height: 1; transition: transform .2s ease; }
 .resource-card:hover .card-action span { transform: translate(3px, -3px); }
 
+.tourism-api-section {
+  padding: clamp(88px, 10vw, 148px) 0 clamp(100px, 12vw, 176px);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.tourism-api-section [hidden] { display: none !important; }
+.tourism-api-heading {
+  display: grid;
+  grid-template-columns: 1.25fr .75fr;
+  gap: clamp(32px, 7vw, 110px);
+  align-items: end;
+  margin-bottom: 48px;
+}
+.tourism-api-heading h2 {
+  margin-top: 18px;
+  font-family: "Giants", sans-serif;
+  font-size: clamp(42px, 6vw, 82px);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+.tourism-api-heading > p {
+  max-width: 38em;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.api-access-panel {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 22px 32px;
+  align-items: center;
+  padding: clamp(24px, 3vw, 38px);
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: var(--accent);
+  color: var(--white);
+}
+.api-access-label {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, .58);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+.api-access-copy strong { display: block; font-size: clamp(18px, 2vw, 24px); line-height: 1.35; }
+.api-access-copy p { margin-top: 7px; color: rgba(255, 255, 255, .66); font-size: 12px; }
+.api-access-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+.api-button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 18px;
+  border: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.api-button:hover { transform: translateY(-2px); }
+.api-button:focus-visible { outline: 3px solid rgba(255, 255, 255, .45); outline-offset: 3px; }
+.api-button-primary { border-color: var(--white); background: var(--white); color: var(--accent); }
+.api-button-primary:hover { background: #DDE8F8; border-color: #DDE8F8; }
+.api-button-quiet { border-color: rgba(255, 255, 255, .34); color: var(--white); }
+.api-button-quiet:hover { background: rgba(255, 255, 255, .1); }
+.api-key-form {
+  grid-column: 1 / -1;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+}
+.api-key-form label { display: block; margin-bottom: 9px; font-size: 12px; font-weight: 700; }
+.api-key-row { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.api-key-row input {
+  min-width: 0;
+  min-height: 48px;
+  padding: 12px 15px;
+  border: 1px solid rgba(255, 255, 255, .42);
+  background: rgba(255, 255, 255, .08);
+  color: var(--white);
+  font-size: 13px;
+}
+.api-key-row input::placeholder { color: rgba(255, 255, 255, .48); }
+.api-key-row input:focus { outline: 2px solid var(--white); outline-offset: 2px; }
+.api-key-form > p { margin-top: 10px; color: rgba(255, 255, 255, .58); font-size: 11px; }
+
+.tourism-toolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(180px, 280px) auto;
+  gap: 12px;
+  align-items: end;
+  margin-top: 34px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid var(--ink);
+}
+.tourism-search span,
+.tourism-filter span { display: block; margin-bottom: 7px; color: var(--accent); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+.tourism-search input,
+.tourism-filter select {
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 13px;
+}
+.tourism-search input:focus,
+.tourism-filter select:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tourism-count { min-width: 90px; padding-bottom: 12px; color: var(--muted); font-size: 11px; text-align: right; }
+
+.tourism-feedback {
+  min-height: 132px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+.tourism-feedback[hidden] { display: none; }
+.tourism-feedback-mark { color: var(--accent); font-size: 28px; }
+.tourism-feedback p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+.tourism-feedback.is-loading .tourism-feedback-mark { animation: tourism-spin 1s linear infinite; }
+@keyframes tourism-spin { to { transform: rotate(360deg); } }
+
+.tourism-list { margin-top: 6px; border-top: 1px solid var(--line); }
+.tourism-item {
+  display: grid;
+  grid-template-columns: 72px minmax(220px, .7fr) minmax(300px, 1.3fr) auto;
+  gap: clamp(18px, 3vw, 42px);
+  align-items: center;
+  min-height: 188px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+.tourism-item-index { align-self: start; padding-top: 7px; color: rgba(26, 26, 26, .42); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.tourism-item-title { min-width: 0; }
+.tourism-item-district { display: block; margin-bottom: 10px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.tourism-item-title h3 { font-size: clamp(24px, 2.7vw, 38px); line-height: 1.05; letter-spacing: -.045em; }
+.tourism-item-title p { margin-top: 10px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.tourism-item-body { display: grid; grid-template-columns: 118px 1fr; gap: 20px; align-items: center; }
+.tourism-item-image {
+  width: 118px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: linear-gradient(145deg, #0A1F44, #4F6D95);
+}
+.tourism-item-image img { width: 100%; height: 100%; object-fit: cover; }
+.tourism-item-description { min-width: 0; }
+.tourism-item-description p {
+  display: -webkit-box;
+  overflow: hidden;
+  color: rgba(26, 26, 26, .74);
+  font-size: 13px;
+  line-height: 1.75;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.tourism-item-meta { margin-top: 11px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+.tourism-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  white-space: nowrap;
+}
+.tourism-item-link:hover { color: #C62828; border-color: #C62828; }
+.tourism-more-wrap { margin-top: 30px; text-align: center; }
+.tourism-more { min-width: 180px; border-color: var(--accent); color: var(--accent); }
+.tourism-more:hover { background: var(--accent); color: var(--white); }
+.tourism-source { margin-top: 28px; color: var(--muted); font-size: 9px; letter-spacing: .1em; }
+.tourism-source a { border-bottom: 1px solid currentColor; color: var(--accent); }
+
 body.modal-open { overflow: hidden; }
 
 .resource-modal {
@@ -260,6 +442,8 @@ body.modal-open { overflow: hidden; }
   .resource-card { grid-column: span 6; }
   .modal-hero { grid-template-columns: .75fr 1.25fr; }
   .modal-hero-copy { padding-inline: 48px; }
+  .tourism-item { grid-template-columns: 54px minmax(200px, .7fr) minmax(280px, 1.3fr); }
+  .tourism-item-link { grid-column: 2 / -1; justify-self: end; }
 }
 
 @media (max-width: 680px) {
@@ -299,4 +483,16 @@ body.modal-open { overflow: hidden; }
   .program-item { min-height: 220px; }
   .review-guide { margin: -18px 0 26px 0; }
   .review-item { grid-template-columns: 1fr; gap: 14px; }
+  .tourism-api-heading { grid-template-columns: 1fr; gap: 22px; }
+  .api-access-panel { grid-template-columns: 1fr; }
+  .api-access-actions { justify-content: flex-start; }
+  .api-key-form { grid-column: auto; }
+  .api-key-row { grid-template-columns: 1fr; }
+  .tourism-toolbar { grid-template-columns: 1fr; }
+  .tourism-count { padding-bottom: 0; text-align: left; }
+  .tourism-item { grid-template-columns: 42px 1fr; gap: 16px; padding: 24px 0; }
+  .tourism-item-title { padding-right: 4px; }
+  .tourism-item-body { grid-column: 2; grid-template-columns: 86px 1fr; gap: 14px; }
+  .tourism-item-image { width: 86px; }
+  .tourism-item-link { grid-column: 2; justify-self: start; }
 }
