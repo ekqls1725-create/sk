@@ -1,2 +1,5 @@
-# Local public-data API credentials (never commit)
+# Local environment and public-data API credentials (never commit)
+.env
+.env.*
+!.env.example
 js/busan-tourism-api.local.json
