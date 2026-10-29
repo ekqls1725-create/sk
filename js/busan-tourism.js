@@ -20,6 +20,8 @@
   let likedItems = new Set();
 
   const cleanDisplayText = (value) => String(value || '')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;|&#160;/gi, ' ')
     .replace(/(?:\(|（)\s*(?:한|영|중간|중번|일)(?:\s*[,·/]\s*(?:한|영|중간|중번|일))*\s*(?:\)|）)/g, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim();
@@ -100,6 +102,7 @@
         getValue(item, ['PLACE', 'place']),
         getValue(item, ['ADDR1', 'addr1']),
         itemDistrict,
+        getValue(item, ['ITEMCNTNTS', 'itemcntnts', 'itemContents']),
         getValue(item, ['MIDDLE_SIZE_RM1', 'middleSizeRm1'])
       ].join(' ')).toLocaleLowerCase('ko');
 
@@ -112,11 +115,16 @@
     const subtitle = cleanDisplayText(getValue(item, ['SUBTITLE', 'subtitle', 'TITLE', 'title']));
     const district = cleanDisplayText(getValue(item, ['GUGUN_NM', 'gugunNm'], '부산'));
     const address = cleanDisplayText(getValue(item, ['ADDR1', 'addr1', 'MAIN_PLACE', 'mainPlace'], '주소 정보 없음'));
-    const description = cleanDisplayText(getValue(item, ['MIDDLE_SIZE_RM1', 'middleSizeRm1'], subtitle || '상세 정보는 데이터 원문에서 확인할 수 있습니다.'));
+    const description = cleanDisplayText(getValue(
+      item,
+      ['ITEMCNTNTS', 'itemcntnts', 'itemContents'],
+      [getValue(item, ['TITLE', 'title']), subtitle].filter(Boolean).join(' · ') || '상세 정보는 데이터 원문에서 확인할 수 있습니다.'
+    ));
     const imageUrl = getValue(item, ['MAIN_IMG_THUMB', 'mainImgThumb', 'MAIN_IMG_NORMAL', 'mainImgNormal'])
       .replace(/^http:\/\//i, 'https://');
     const phone = cleanDisplayText(getValue(item, ['CNTCT_TEL', 'cntctTel']));
     const hours = cleanDisplayText(getValue(item, ['USAGE_DAY_WEEK_AND_TIME', 'usageDayWeekAndTime']));
+    const holiday = cleanDisplayText(getValue(item, ['HLDY_INFO', 'hldyInfo']));
     const homepage = getValue(item, ['HOMEPAGE_URL', 'homepageUrl']);
     const itemId = getValue(item, ['UC_SEQ', 'ucSeq'], `${title}|${address}`);
     const isLiked = likedItems.has(itemId);
@@ -163,7 +171,7 @@
     copy.textContent = description;
     const meta = document.createElement('div');
     meta.className = 'tourism-item-meta';
-    meta.textContent = [phone && `문의 ${phone}`, hours].filter(Boolean).join(' · ') || '이용 정보 확인 필요';
+    meta.textContent = [phone && `문의 ${phone}`, hours, holiday && `휴무 ${holiday}`].filter(Boolean).join(' · ') || '이용 정보 확인 필요';
     descriptionWrap.append(copy, meta);
     body.append(imageWrap, descriptionWrap);
 

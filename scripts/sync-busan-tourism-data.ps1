@@ -62,12 +62,20 @@ do {
       GUGUN_NM = $item.GUGUN_NM
       ADDR1 = $item.ADDR1
       MAIN_PLACE = $item.MAIN_PLACE
+      PLACE = $item.PLACE
       TITLE = $item.TITLE
       SUBTITLE = $item.SUBTITLE
+      ITEMCNTNTS = $item.ITEMCNTNTS
       CNTCT_TEL = $item.CNTCT_TEL
       HOMEPAGE_URL = $item.HOMEPAGE_URL
+      USAGE_DAY = $item.USAGE_DAY
       USAGE_DAY_WEEK_AND_TIME = $item.USAGE_DAY_WEEK_AND_TIME
+      HLDY_INFO = $item.HLDY_INFO
+      USAGE_AMOUNT = $item.USAGE_AMOUNT
+      TRFC_INFO = $item.TRFC_INFO
       MIDDLE_SIZE_RM1 = $item.MIDDLE_SIZE_RM1
+      LAT = $item.LAT
+      LNG = $item.LNG
       MAIN_IMG_NORMAL = $item.MAIN_IMG_NORMAL
       MAIN_IMG_THUMB = $item.MAIN_IMG_THUMB
     })
