@@ -5,19 +5,11 @@ param(
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $envPath = Join-Path $projectRoot '.env'
-$configPath = Join-Path $projectRoot 'js\busan-tourism-api.local.json'
 
 if ($Clear) {
-  $removed = $false
-  foreach ($path in @($envPath, $configPath)) {
-    if (Test-Path -LiteralPath $path) {
-      Remove-Item -LiteralPath $path -Force
-      $removed = $true
-    }
-  }
-
-  if ($removed) {
-    Write-Host '로컬 .env와 브라우저용 API 설정을 삭제했습니다.' -ForegroundColor Yellow
+  if (Test-Path -LiteralPath $envPath) {
+    Remove-Item -LiteralPath $envPath -Force
+    Write-Host '로컬 .env API 키를 삭제했습니다.' -ForegroundColor Yellow
   } else {
     Write-Host '삭제할 로컬 API 키가 없습니다.' -ForegroundColor Yellow
   }
@@ -41,11 +33,6 @@ $trimmedKey = $serviceKey.Trim()
 $envLine = 'BUSAN_TOURISM_API_KEY="' + $trimmedKey.Replace('"', '\"') + '"'
 Set-Content -LiteralPath $envPath -Value $envLine -Encoding UTF8
 
-$browserConfig = [ordered]@{
-  serviceKey = $trimmedKey
-  updatedAt = (Get-Date).ToString('o')
-}
-
-$browserConfig | ConvertTo-Json | Set-Content -LiteralPath $configPath -Encoding UTF8
-Write-Host '부산 관광 API 키를 .env에 등록하고 브라우저용 로컬 설정을 생성했습니다.' -ForegroundColor Green
-Write-Host '.env와 생성된 설정 파일은 .gitignore에 포함되어 GitHub에 업로드되지 않습니다.'
+Write-Host '부산 관광 API 키를 로컬 .env에 등록했습니다.' -ForegroundColor Green
+Write-Host '.env는 .gitignore에 포함되어 GitHub와 웹페이지에 업로드되지 않습니다.'
+Write-Host '데이터를 갱신하려면 scripts\sync-busan-tourism-data.ps1을 실행하세요.'

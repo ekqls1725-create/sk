@@ -1,35 +1,22 @@
 (() => {
-  const endpoint = 'https://apis.data.go.kr/6260000/AttractionService/getAttractionKr';
-  const localConfigUrl = 'js/busan-tourism-api.local.json';
-  const storageKey = 'baseArchiveBusanTourismApiKey';
+  const dataUrl = 'data/busan-attractions.json';
   const likesStorageKey = 'baseArchiveBusanTourismLikes';
-  const pageSize = 100;
   const visibleStep = 12;
 
   const list = document.querySelector('[data-tourism-list]');
   if (!list) return;
 
-  const accessPanel = document.querySelector('[data-api-access-panel]');
-  const statusTitle = document.querySelector('[data-api-status-title]');
-  const statusCopy = document.querySelector('[data-api-status-copy]');
-  const keyToggle = document.querySelector('[data-api-key-toggle]');
-  const keyClear = document.querySelector('[data-api-key-clear]');
-  const keyForm = document.querySelector('[data-api-key-form]');
-  const keyInput = document.querySelector('#busan-api-key');
   const toolbar = document.querySelector('[data-tourism-toolbar]');
   const searchInput = document.querySelector('[data-tourism-search]');
   const districtSelect = document.querySelector('[data-tourism-district]');
   const count = document.querySelector('[data-tourism-count]');
   const feedback = document.querySelector('[data-tourism-feedback]');
+  const updatedText = document.querySelector('[data-tourism-updated]');
   const moreWrap = document.querySelector('[data-tourism-more-wrap]');
   const moreButton = document.querySelector('[data-tourism-more]');
 
-  let serviceKey = '';
-  let currentPage = 1;
-  let totalCount = 0;
   let allItems = [];
   let visibleCount = visibleStep;
-  let isLoading = false;
   let likedItems = new Set();
 
   const cleanDisplayText = (value) => String(value || '')
@@ -43,16 +30,6 @@
       if (value !== undefined && value !== null && String(value).trim()) return String(value).trim();
     }
     return fallback;
-  };
-
-  const normalizeKey = (key) => {
-    const trimmed = String(key || '').trim();
-    if (!trimmed) return '';
-    try {
-      return decodeURIComponent(trimmed);
-    } catch {
-      return trimmed;
-    }
   };
 
   const readLikedItems = () => {
@@ -70,17 +47,6 @@
     } catch { /* ignore unavailable storage */ }
   };
 
-  const readLocalConfig = async () => {
-    try {
-      const response = await fetch(localConfigUrl, { cache: 'no-store' });
-      if (!response.ok) return '';
-      const config = await response.json();
-      return normalizeKey(config.serviceKey);
-    } catch {
-      return '';
-    }
-  };
-
   const setFeedback = (message, type = 'default') => {
     feedback.hidden = false;
     feedback.classList.toggle('is-loading', type === 'loading');
@@ -95,79 +61,15 @@
     feedback.classList.remove('is-loading');
   };
 
-  const updateAccessState = (connected, source = 'browser') => {
-    accessPanel.classList.toggle('is-connected', connected);
-    keyClear.hidden = !connected || source === 'terminal';
-    keyToggle.textContent = connected ? 'API 키 변경' : 'API 키 등록';
-    statusTitle.textContent = connected ? '부산 명소 데이터 연결됨' : 'API 키를 등록해 주세요';
-    statusCopy.textContent = connected
-      ? source === 'terminal'
-        ? '터미널의 로컬 설정으로 연결했습니다. 이 키는 GitHub에 업로드되지 않습니다.'
-        : '이 브라우저에 저장한 키로 연결했습니다. 웹사이트 코드에는 키가 포함되지 않습니다.'
-      : '키는 이 브라우저에만 저장되며 웹사이트 코드나 GitHub에는 포함되지 않습니다.';
-  };
-
-  const parseResponse = (payload) => {
-    const apiRoot = payload?.getAttractionKr;
-    const body = payload?.response?.body;
-    const header = payload?.response?.header;
-    const apiHeader = apiRoot?.header;
-    const resultCode = header?.resultCode ?? apiHeader?.code;
-
-    if (resultCode && resultCode !== '00' && resultCode !== '0000') {
-      throw new Error(header?.resultMsg || apiHeader?.message || 'API 요청을 처리하지 못했습니다.');
-    }
-
-    const itemsValue = apiRoot?.item ?? body?.items?.item ?? body?.items ?? [];
-    const items = Array.isArray(itemsValue) ? itemsValue : itemsValue ? [itemsValue] : [];
-    const total = Number(apiRoot?.totalCount ?? body?.totalCount ?? items.length);
-    return { items, total: Number.isFinite(total) ? total : items.length };
-  };
-
-  const loadPage = async (page = 1, append = false) => {
-    if (!serviceKey || isLoading) return;
-    isLoading = true;
-    setFeedback('부산광역시 관광 명소 데이터를 불러오는 중입니다.', 'loading');
-    moreButton.disabled = true;
-
-    try {
-      const url = new URL(endpoint);
-      url.searchParams.set('ServiceKey', serviceKey);
-      url.searchParams.set('pageNo', String(page));
-      url.searchParams.set('numOfRows', String(pageSize));
-      url.searchParams.set('resultType', 'json');
-
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`API 서버 응답 오류 (${response.status})`);
-      const responseText = await response.text();
-      let payload;
-      try {
-        payload = JSON.parse(responseText);
-      } catch {
-        throw new Error('API 응답을 읽지 못했습니다.');
-      }
-      const result = parseResponse(payload);
-
-      allItems = append ? [...allItems, ...result.items] : result.items;
-      totalCount = result.total;
-      currentPage = page;
-      visibleCount = append ? visibleCount + visibleStep : visibleStep;
-
-      populateDistricts();
-      render();
-      toolbar.hidden = false;
-      hideFeedback();
-    } catch (error) {
-      toolbar.hidden = true;
-      list.replaceChildren();
-      moreWrap.hidden = true;
-      setFeedback(`${error.message} 인증키가 유효한지, API 활용 신청이 완료됐는지 확인해 주세요.`, 'error');
-      statusTitle.textContent = '데이터 연결을 확인해 주세요';
-      statusCopy.textContent = '키를 다시 등록하거나 잠시 후 재시도할 수 있습니다.';
-    } finally {
-      isLoading = false;
-      moreButton.disabled = false;
-    }
+  const formatUpdatedDate = (value) => {
+    if (!value) return '공개 데이터 기준';
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return `${value} 기준`;
+    return `${new Intl.DateTimeFormat('ko-KR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(date)} 기준`;
   };
 
   const populateDistricts = () => {
@@ -249,7 +151,12 @@
       image.referrerPolicy = 'no-referrer';
       image.addEventListener('error', () => image.remove());
       imageWrap.append(image);
+    } else {
+      imageWrap.classList.add('is-placeholder');
+      imageWrap.setAttribute('aria-hidden', 'true');
+      imageWrap.textContent = 'BUSAN';
     }
+
     const descriptionWrap = document.createElement('div');
     descriptionWrap.className = 'tourism-item-description';
     const copy = document.createElement('p');
@@ -312,86 +219,48 @@
       hideFeedback();
     }
 
-    const hasHiddenFilteredItems = visibleCount < filtered.length;
-    const hasMoreServerItems = allItems.length < totalCount;
-    moreWrap.hidden = !hasHiddenFilteredItems && !hasMoreServerItems;
+    moreWrap.hidden = visibleCount >= filtered.length;
   };
 
-  const saveBrowserKey = (key) => {
+  const loadData = async () => {
+    setFeedback('부산 관광 명소 데이터를 불러오는 중입니다.', 'loading');
+
     try {
-      localStorage.setItem(storageKey, key);
-      return true;
-    } catch {
-      return false;
+      const response = await fetch(dataUrl, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`데이터 파일 응답 오류 (${response.status})`);
+      const payload = await response.json();
+      const items = Array.isArray(payload) ? payload : payload.items;
+      if (!Array.isArray(items) || !items.length) throw new Error('표시할 관광 명소 데이터가 없습니다.');
+
+      allItems = items;
+      updatedText.textContent = formatUpdatedDate(payload.updatedAt);
+      populateDistricts();
+      toolbar.hidden = false;
+      render();
+    } catch (error) {
+      toolbar.hidden = true;
+      list.replaceChildren();
+      moreWrap.hidden = true;
+      updatedText.textContent = '데이터 연결 확인 필요';
+      setFeedback(`${error.message} 잠시 후 다시 확인해 주세요.`, 'error');
     }
   };
-
-  keyToggle.addEventListener('click', () => {
-    keyForm.hidden = !keyForm.hidden;
-    if (!keyForm.hidden) keyInput.focus();
-  });
-
-  keyForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const nextKey = normalizeKey(keyInput.value);
-    if (!nextKey) return;
-    serviceKey = nextKey;
-    saveBrowserKey(nextKey);
-    keyInput.value = '';
-    keyForm.hidden = true;
-    allItems = [];
-    updateAccessState(true, 'browser');
-    loadPage(1);
-  });
-
-  keyClear.addEventListener('click', () => {
-    try { localStorage.removeItem(storageKey); } catch { /* ignore unavailable storage */ }
-    serviceKey = '';
-    allItems = [];
-    list.replaceChildren();
-    toolbar.hidden = true;
-    moreWrap.hidden = true;
-    updateAccessState(false);
-    setFeedback('API 키를 등록하면 부산 전역의 관광 명소를 목록으로 확인할 수 있습니다.');
-  });
 
   searchInput.addEventListener('input', () => {
     visibleCount = visibleStep;
     render();
   });
+
   districtSelect.addEventListener('change', () => {
     visibleCount = visibleStep;
     render();
   });
 
-  moreButton.addEventListener('click', async () => {
-    const filtered = getFilteredItems();
-    if (visibleCount < filtered.length) {
-      visibleCount += visibleStep;
-      render();
-      return;
-    }
-
-    if (allItems.length < totalCount) {
-      await loadPage(currentPage + 1, true);
-    }
+  moreButton.addEventListener('click', () => {
+    visibleCount += visibleStep;
+    render();
   });
 
-  const initialize = async () => {
-    readLikedItems();
-    let browserKey = '';
-    try { browserKey = normalizeKey(localStorage.getItem(storageKey)); } catch { /* ignore unavailable storage */ }
-    const terminalKey = await readLocalConfig();
-    serviceKey = terminalKey || browserKey;
-
-    if (!serviceKey) {
-      updateAccessState(false);
-      return;
-    }
-
-    updateAccessState(true, terminalKey ? 'terminal' : 'browser');
-    loadPage(1);
-  };
-
-  initialize();
+  readLikedItems();
+  loadData();
 })();

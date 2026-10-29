@@ -1,0 +1,103 @@
+{
+  "source": "부산광역시 부산명소정보 서비스",
+  "sourceUrl": "https://data.busan.go.kr/bdip/opendata/detail.do?publicdatapk=15063481",
+  "updatedAt": "2026-10-29",
+  "items": [
+    {
+      "UC_SEQ": "seed-001",
+      "MAIN_TITLE": "흰여울문화마을",
+      "GUGUN_NM": "영도구",
+      "ADDR1": "부산광역시 영도구 절영로 194 일원",
+      "MIDDLE_SIZE_RM1": "바다를 따라 이어지는 절벽 골목과 오래된 주거 풍경이 어우러진 영도의 대표 문화마을입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "마을 상시 관람 · 개별 시설 운영시간 확인"
+    },
+    {
+      "UC_SEQ": "seed-002",
+      "MAIN_TITLE": "아홉산숲",
+      "GUGUN_NM": "기장군",
+      "ADDR1": "부산광역시 기장군 철마면 미동길 37-1",
+      "MIDDLE_SIZE_RM1": "오랜 시간 보전된 대나무숲과 금강소나무 군락을 천천히 걸으며 자연을 경험할 수 있는 숲입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "방문 전 예약 및 운영시간 확인"
+    },
+    {
+      "UC_SEQ": "seed-003",
+      "MAIN_TITLE": "보수동 책방골목",
+      "GUGUN_NM": "중구",
+      "ADDR1": "부산광역시 중구 책방골목길 8 일원",
+      "MIDDLE_SIZE_RM1": "헌책과 새책, 오래된 잡지가 작은 서점마다 이어지는 부산 원도심의 책 문화 골목입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "책방별 운영시간 상이"
+    },
+    {
+      "UC_SEQ": "seed-004",
+      "MAIN_TITLE": "임시수도기념관",
+      "GUGUN_NM": "서구",
+      "ADDR1": "부산광역시 서구 임시수도기념로 45",
+      "MIDDLE_SIZE_RM1": "한국전쟁기 임시수도 부산의 역사와 당시 대통령 관저의 생활상을 살펴볼 수 있는 역사 공간입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "관람시간 및 휴관일 사전 확인"
+    },
+    {
+      "UC_SEQ": "seed-005",
+      "MAIN_TITLE": "아미동 비석문화마을",
+      "GUGUN_NM": "서구",
+      "ADDR1": "부산광역시 서구 아미로 46 안쪽 일원",
+      "MIDDLE_SIZE_RM1": "피란민의 생활 흔적과 산복도로 풍경이 남아 있어 부산의 근현대사를 돌아볼 수 있는 마을입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "마을 상시 관람 · 주민 생활공간 배려"
+    },
+    {
+      "UC_SEQ": "seed-006",
+      "MAIN_TITLE": "호천마을",
+      "GUGUN_NM": "부산진구",
+      "ADDR1": "부산광역시 부산진구 엄광로 491 일원",
+      "MIDDLE_SIZE_RM1": "산복도로 위에서 부산 도심의 불빛과 빼곡한 주거 풍경을 조망할 수 있는 야경 명소입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "상시 관람 · 야간 방문 시 안전 유의"
+    },
+    {
+      "UC_SEQ": "seed-007",
+      "MAIN_TITLE": "부산시민공원",
+      "GUGUN_NM": "부산진구",
+      "ADDR1": "부산광역시 부산진구 시민공원로 73",
+      "MIDDLE_SIZE_RM1": "산책로, 잔디광장과 문화시설을 갖춘 부산 도심의 대규모 공원으로 일상적인 휴식을 즐기기 좋습니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "공원 상시 이용 · 시설별 운영시간 상이"
+    },
+    {
+      "UC_SEQ": "seed-008",
+      "MAIN_TITLE": "화명수목원",
+      "GUGUN_NM": "북구",
+      "ADDR1": "부산광역시 북구 산성로 299",
+      "MIDDLE_SIZE_RM1": "다양한 식물과 숲길, 생태 연못을 둘러보며 계절별 자연 풍경을 만날 수 있는 공립 수목원입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "관람시간 및 휴원일 사전 확인"
+    },
+    {
+      "UC_SEQ": "seed-009",
+      "MAIN_TITLE": "감천문화마을",
+      "GUGUN_NM": "사하구",
+      "ADDR1": "부산광역시 사하구 감내2로 203 일원",
+      "MIDDLE_SIZE_RM1": "산비탈을 따라 이어진 골목과 다채로운 집, 예술 작품을 함께 둘러볼 수 있는 부산의 대표 마을 여행지입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "마을 상시 관람 · 개별 시설 운영시간 확인"
+    },
+    {
+      "UC_SEQ": "seed-010",
+      "MAIN_TITLE": "태종대",
+      "GUGUN_NM": "영도구",
+      "ADDR1": "부산광역시 영도구 전망로 24",
+      "MIDDLE_SIZE_RM1": "울창한 해송 숲과 기암절벽, 탁 트인 바다 전망을 함께 만날 수 있는 영도의 자연 명소입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "공원 이용시간 및 다누비열차 운행 확인"
+    },
+    {
+      "UC_SEQ": "seed-011",
+      "MAIN_TITLE": "송도해수욕장",
+      "GUGUN_NM": "서구",
+      "ADDR1": "부산광역시 서구 송도해변로 100 일원",
+      "MIDDLE_SIZE_RM1": "해변 산책과 바다 전망을 즐길 수 있고 주변 해상케이블카와 산책로를 함께 둘러보기 좋은 장소입니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "해변 상시 이용 · 시설별 운영시간 상이"
+    },
+    {
+      "UC_SEQ": "seed-012",
+      "MAIN_TITLE": "해동용궁사",
+      "GUGUN_NM": "기장군",
+      "ADDR1": "부산광역시 기장군 기장읍 용궁길 86",
+      "MIDDLE_SIZE_RM1": "바다와 맞닿은 해안 절경 속에 자리한 사찰로, 기장 바다의 풍경과 전통 건축을 함께 감상할 수 있습니다.",
+      "USAGE_DAY_WEEK_AND_TIME": "관람시간 및 행사 일정 사전 확인"
+    }
+  ]
+}
